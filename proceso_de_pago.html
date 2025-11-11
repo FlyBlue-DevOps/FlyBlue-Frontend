@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlyBlue - Pago Seguro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                        "flyblue-primary": "#005A9C",
+                        "flyblue-secondary": "#E6F0FA",
+                        "flyblue-success": "#28a745",
+                        "flyblue-error": "#dc3545",
+                        "flyblue-text": "#333333",
+                        "flyblue-text-muted": "#6c757d"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-flyblue-text dark:text-gray-200">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between bg-background-light dark:bg-background-dark sticky top-0 z-10 border-b border-gray-200 dark:border-gray-800">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-flyblue-text dark:text-gray-200">arrow_back</span>
+</div>
+<h1 class="text-flyblue-text dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Pago Seguro</h1>
+<div class="flex w-12 items-center justify-end">
+<div class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 text-flyblue-success gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">lock</span>
+</div>
+</div>
+</div>
+<main class="flex-1 pb-32">
+<!-- Summary Card -->
+<div class="p-4">
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 p-4 shadow-sm">
+<h2 class="text-flyblue-text dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] mb-3">Tu Vuelo</h2>
+<div class="flex justify-between gap-x-6 py-2 border-b border-gray-200 dark:border-gray-700">
+<p class="text-flyblue-text-muted dark:text-gray-400 text-sm font-normal leading-normal">Vuelo</p>
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-semibold leading-normal text-right">MEX - CUN, 24 Nov</p>
+</div>
+<div class="flex justify-between gap-x-6 py-2 border-b border-gray-200 dark:border-gray-700">
+<p class="text-flyblue-text-muted dark:text-gray-400 text-sm font-normal leading-normal">Tarifa Base</p>
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-normal leading-normal text-right">$984.56 MXN</p>
+</div>
+<div class="flex justify-between gap-x-6 py-2 border-b border-gray-200 dark:border-gray-700">
+<p class="text-flyblue-text-muted dark:text-gray-400 text-sm font-normal leading-normal">Impuestos y TUA</p>
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-normal leading-normal text-right">$250.00 MXN</p>
+</div>
+<div class="flex justify-between gap-x-6 pt-3">
+<p class="text-flyblue-text dark:text-gray-200 text-base font-bold leading-normal">Total a Pagar</p>
+<p class="text-flyblue-primary text-base font-bold leading-normal text-right">$1,234.56 MXN</p>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="text-flyblue-text dark:text-gray-200 text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Elige cómo quieres pagar</h2>
+<!-- Segmented Buttons -->
+<div class="flex px-4 py-3">
+<div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-gray-900 has-[:checked]:shadow-sm has-[:checked]:text-flyblue-primary text-flyblue-text-muted dark:text-gray-400 text-sm font-medium leading-normal">
+<span class="truncate">Tarjeta de Crédito/Débito</span>
+<input checked="" class="invisible w-0" name="payment-method" type="radio" value="card"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-gray-900 has-[:checked]:shadow-sm has-[:checked]:text-flyblue-primary text-flyblue-text-muted dark:text-gray-400 text-sm font-medium leading-normal">
+<span class="truncate">PayPal</span>
+<input class="invisible w-0" name="payment-method" type="radio" value="paypal"/>
+</label>
+</div>
+</div>
+<!-- Card Input Form -->
+<div class="flex flex-col gap-y-4 px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-medium leading-normal pb-2">Nombre en la tarjeta</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-flyblue-text dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-flyblue-primary/50 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-flyblue-primary dark:focus:border-flyblue-primary h-14 placeholder:text-flyblue-text-muted dark:placeholder:text-gray-500 p-3.5 text-base font-normal leading-normal" placeholder="Nombre como aparece en la tarjeta" value=""/>
+</label>
+<label class="flex flex-col w-full">
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-medium leading-normal pb-2">Número de tarjeta</p>
+<div class="relative">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-flyblue-text dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-flyblue-primary/50 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-flyblue-primary dark:focus:border-flyblue-primary h-14 placeholder:text-flyblue-text-muted dark:placeholder:text-gray-500 p-3.5 pl-4 pr-12 text-base font-normal leading-normal" placeholder="0000 0000 0000 0000" value=""/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3">
+<img class="h-6 w-auto" data-alt="Visa logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGGDwN2RzKl-zFzOnBjXti28ECE3VtFKxlQidLabRJO6noAnS5GihmlOXRCD9xpxsGU5wO3CLe0KieMKRIcwssZBg1E1KyqkeiMdbSXsEGcMrHH_zJcpwS51_YEMaCH3FJUiXDpV57PWHGlctY0Tfr-X4H2_lRSiMw54yOMvds1IaoYuaaRs2K4Oav402GtRuuQcKTQfAD-ZGgdAGL-oAYHB3rdLQTcJWUaqiFUDUs7_6ff1d-r0o6aLSegKIRciLJAcHB6ElA6tM"/>
+</div>
+</div>
+</label>
+<div class="flex gap-4">
+<label class="flex flex-col flex-1">
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-medium leading-normal pb-2">Vencimiento</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-flyblue-text dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-flyblue-primary/50 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-flyblue-primary dark:focus:border-flyblue-primary h-14 placeholder:text-flyblue-text-muted dark:placeholder:text-gray-500 p-3.5 text-base font-normal leading-normal" placeholder="MM/AA" value=""/>
+</label>
+<label class="flex flex-col flex-1">
+<p class="text-flyblue-text dark:text-gray-200 text-sm font-medium leading-normal pb-2 flex items-center gap-1">CVC <span class="material-symbols-outlined text-sm text-flyblue-text-muted dark:text-gray-400">help</span></p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-flyblue-text dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-flyblue-primary/50 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:border-flyblue-primary dark:focus:border-flyblue-primary h-14 placeholder:text-flyblue-text-muted dark:placeholder:text-gray-500 p-3.5 text-base font-normal leading-normal" placeholder="123" value=""/>
+</label>
+</div>
+</div>
+<!-- Security Trust Badges -->
+<div class="px-4 py-4">
+<div class="flex items-center justify-center gap-4 rounded-lg bg-flyblue-secondary/50 dark:bg-gray-800 p-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-flyblue-success text-lg">verified_user</span>
+<p class="text-flyblue-text dark:text-gray-300 text-xs font-medium">PCI DSS Compliant</p>
+</div>
+<div class="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-flyblue-success text-lg">shield_lock</span>
+<p class="text-flyblue-text dark:text-gray-300 text-xs font-medium">Norton Secured</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Footer with CTA -->
+<footer class="fixed bottom-0 left-0 right-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 border-t border-gray-200 dark:border-gray-800">
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<input class="form-checkbox mt-0.5 h-5 w-5 rounded border-gray-300 text-flyblue-primary focus:ring-flyblue-primary" id="terms" type="checkbox"/>
+<label class="text-flyblue-text-muted dark:text-gray-400 text-sm" for="terms">
+                        He leído y acepto los <a class="font-medium text-flyblue-primary underline" href="#">Términos y Condiciones</a> y la <a class="font-medium text-flyblue-primary underline" href="#">Política de Privacidad</a>.
+                    </label>
+</div>
+<div class="flex items-center justify-center gap-2 text-flyblue-text-muted dark:text-gray-400">
+<span class="material-symbols-outlined text-base">lock</span>
+<p class="text-xs">Tu transacción está protegida con encriptación SSL</p>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 bg-flyblue-primary text-white gap-2 text-base font-bold leading-normal tracking-[0.015em]">Pagar y Confirmar $1,234.56 MXN</button>
+</div>
+</footer>
+</div>
+</body></html>
