@@ -6,7 +6,7 @@ import './Auth.css';
 const Login = () => {
     const [formData, setFormData] = useState({
         email: '',
-        password: ''
+        contrasena: ''
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -26,7 +26,14 @@ const Login = () => {
         setLoading(true);
         setError('');
 
-        const result = await login(formData.email, formData.password);
+        // Validaciones básicas
+        if (!formData.email || !formData.contrasena) {
+            setError('Por favor completa todos los campos');
+            setLoading(false);
+            return;
+        }
+
+        const result = await login(formData.email, formData.contrasena);
 
         if (result.success) {
             navigate('/');
@@ -52,6 +59,7 @@ const Login = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        placeholder="usuario@ejemplo.com"
                     />
                 </div>
 
@@ -59,10 +67,12 @@ const Login = () => {
                     <label>Contraseña:</label>
                     <input
                         type="password"
-                        name="password"
-                        value={formData.password}
+                        name="contrasena"
+                        value={formData.contrasena}
                         onChange={handleChange}
                         required
+                        placeholder="Ingresa tu contraseña"
+                        minLength="6"
                     />
                 </div>
 

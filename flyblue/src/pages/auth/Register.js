@@ -5,13 +5,11 @@ import './Auth.css';
 
 const Register = () => {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        id: '', // Cedula
+        nombre: '',
         email: '',
-        password: '',
-        confirmPassword: '',
-        phone: '',
-        documentNumber: ''
+        contrasena: '',
+        confirmContrasena: ''
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -31,27 +29,33 @@ const Register = () => {
         setLoading(true);
         setError('');
 
-        // Validaciones básicas
-        if (formData.password !== formData.confirmPassword) {
+        // Validaciones
+        if (!formData.id) {
+            setError('La cédula es requerida');
+            setLoading(false);
+            return;
+        }
+
+        if (formData.contrasena !== formData.confirmContrasena) {
             setError('Las contraseñas no coinciden');
             setLoading(false);
             return;
         }
 
-        if (formData.password.length < 6) {
+        if (formData.contrasena.length < 6) {
             setError('La contraseña debe tener al menos 6 caracteres');
             setLoading(false);
             return;
         }
 
         const userData = {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
+            id: formData.id, // Cedula
+            firstName: formData.nombre, // Se mapeará a "nombre" en el contexto
             email: formData.email,
-            password: formData.password,
-            phone: formData.phone,
-            documentNumber: formData.documentNumber
+            password: formData.contrasena // Se mapeará a "contrasena" en el contexto
         };
+
+        console.log('Datos del formulario:', userData);
 
         const result = await register(userData);
 
@@ -71,28 +75,28 @@ const Register = () => {
 
                 {error && <div className="error-message">{error}</div>}
 
-                <div className="form-row">
-                    <div className="form-group">
-                        <label>Nombre:</label>
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+                <div className="form-group">
+                    <label>Cédula:</label>
+                    <input
+                        type="text"
+                        name="id"
+                        value={formData.id}
+                        onChange={handleChange}
+                        required
+                        placeholder="Tu número de cédula"
+                    />
+                </div>
 
-                    <div className="form-group">
-                        <label>Apellido:</label>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+                <div className="form-group">
+                    <label>Nombre completo:</label>
+                    <input
+                        type="text"
+                        name="nombre"
+                        value={formData.nombre}
+                        onChange={handleChange}
+                        required
+                        placeholder="Tu nombre completo"
+                    />
                 </div>
 
                 <div className="form-group">
@@ -103,28 +107,7 @@ const Register = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label>Teléfono:</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label>Número de Documento:</label>
-                    <input
-                        type="text"
-                        name="documentNumber"
-                        value={formData.documentNumber}
-                        onChange={handleChange}
-                        required
+                        placeholder="usuario@ejemplo.com"
                     />
                 </div>
 
@@ -133,10 +116,11 @@ const Register = () => {
                         <label>Contraseña:</label>
                         <input
                             type="password"
-                            name="password"
-                            value={formData.password}
+                            name="contrasena"
+                            value={formData.contrasena}
                             onChange={handleChange}
                             required
+                            placeholder="Mínimo 6 caracteres"
                             minLength="6"
                         />
                     </div>
@@ -145,10 +129,11 @@ const Register = () => {
                         <label>Confirmar Contraseña:</label>
                         <input
                             type="password"
-                            name="confirmPassword"
-                            value={formData.confirmPassword}
+                            name="confirmContrasena"
+                            value={formData.confirmContrasena}
                             onChange={handleChange}
                             required
+                            placeholder="Repite tu contraseña"
                             minLength="6"
                         />
                     </div>
