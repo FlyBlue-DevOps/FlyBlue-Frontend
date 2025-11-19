@@ -127,7 +127,7 @@
 }
 
 .city {
-    color: #1e40af;
+    color: #af1e77;
 }
 
 .arrow {
@@ -257,13 +257,13 @@
 .city-code {
     font-size: 18px;
     font-weight: bold;
-    color: #1e40af;
+    color: #102360;
     display: block;
 }
 
 .city-name {
     font-size: 12px;
-    color: #6b7280;
+    color: #000000;
     display: block;
 }
 
@@ -275,7 +275,7 @@
 .flight-price {
     font-size: 24px;
     font-weight: bold;
-    color: #10b981;
+    color: #324566;
 }
 
 .flight-details {
