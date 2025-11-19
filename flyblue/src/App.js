@@ -6,6 +6,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import Flights from './pages/flights/Flights';
+import FlightDetail from './pages/flights/FlightDetail';
 import Profile from './pages/profile/Profile';
 import Layout from './components/layout/Layout';
 
@@ -34,6 +35,14 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <Flights />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/flight/:flightId" element={
+            <ProtectedRoute>
+              <Layout>
+                <FlightDetail />
               </Layout>
             </ProtectedRoute>
           } />
