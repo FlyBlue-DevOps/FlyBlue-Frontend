@@ -9,15 +9,18 @@ import Flights from './pages/flights/Flights';
 import FlightDetail from './pages/flights/FlightDetail';
 import Profile from './pages/profile/Profile';
 import Layout from './components/layout/Layout';
+import CreateBooking from './pages/bookings/CreateBooking';
+import PaymentPage from './pages/payments/PaymentPage';
+import PaymentSuccess from './pages/payments/PaymentSuccess';
 
 // Componente para rutas protegidas
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
-  
+
   if (loading) {
     return <div>Cargando...</div>;
   }
-  
+
   return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
@@ -29,12 +32,36 @@ function App() {
           {/* Rutas públicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          
+
           {/* Rutas protegidas */}
           <Route path="/" element={
             <ProtectedRoute>
               <Layout>
                 <Flights />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/booking/:flightId" element={
+            <ProtectedRoute>
+              <Layout>
+                <CreateBooking />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/payment/:bookingId" element={
+            <ProtectedRoute>
+              <Layout>
+                <PaymentPage />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/payment/success/:paymentId" element={
+            <ProtectedRoute>
+              <Layout>
+                <PaymentSuccess />
               </Layout>
             </ProtectedRoute>
           } />
@@ -46,7 +73,7 @@ function App() {
               </Layout>
             </ProtectedRoute>
           } />
-          
+
           <Route path="/profile" element={
             <ProtectedRoute>
               <Layout>

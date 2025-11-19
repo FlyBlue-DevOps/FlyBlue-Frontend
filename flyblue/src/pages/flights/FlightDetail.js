@@ -167,13 +167,13 @@ const FlightDetail = () => {
                             </div>
                         </div>
 
-                        <button
-                            onClick={handleReserve}
+                        <Link
+                            to={`/booking/${flight.id}`}
+                            state={{ flight, seats: selectedSeats }}
                             className="reserve-now-btn"
-                            disabled={flight.asientos_disponibles === 0}
                         >
-                            {flight.asientos_disponibles === 0 ? 'No hay asientos disponibles' : 'Continuar con la Reserva'}
-                        </button>
+                            Continuar con la Reserva
+                        </Link>
                     </div>
                 </div>
             </div>
