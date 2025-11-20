@@ -109,7 +109,7 @@ const MyBookings = () => {
         <div className="my-bookings-page">
             <div className="bookings-header">
                 <h1>Mis Reservas</h1>
-                <p>Gestiona y revisa todas tus reservas de vuelo</p>
+                <p>Gestiona y revisa todas tus reservas de vuelos de flyblue</p>
                 <div className="user-info" style={{ fontSize: '14px', color: '#666', marginTop: '10px' }}>
                     Cédula: {getUserId() || 'No disponible'} |
                     Email: {user?.email} |
