@@ -135,38 +135,8 @@ const FlightDetail = () => {
                     </div>
 
                     <div className="booking-section">
-                        <h3>Seleccionar Asientos</h3>
-                        <div className="seat-selection">
-                            <label htmlFor="seats">Número de asientos:</label>
-                            <select
-                                id="seats"
-                                value={selectedSeats}
-                                onChange={handleSeatChange}
-                                className="seat-select"
-                            >
-                                {[...Array(Math.min(flight.asientos_disponibles, 10)).keys()].map(num => (
-                                    <option key={num + 1} value={num + 1}>
-                                        {num + 1} asiento{num + 1 > 1 ? 's' : ''}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="price-summary">
-                            <div className="price-row">
-                                <span>Precio por asiento:</span>
-                                <span>${flight.precio_base.toLocaleString()}</span>
-                            </div>
-                            <div className="price-row">
-                                <span>Asientos seleccionados:</span>
-                                <span>{selectedSeats}</span>
-                            </div>
-                            <div className="price-row total">
-                                <span>Total:</span>
-                                <span>${(flight.precio_base * selectedSeats).toLocaleString()}</span>
-                            </div>
-                        </div>
-
+                        <h3>SIgue el proceso!</h3>
+                        
                         <Link
                             to={`/booking/${flight.id}`}
                             state={{ flight, seats: selectedSeats }}

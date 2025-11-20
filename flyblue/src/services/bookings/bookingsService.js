@@ -7,9 +7,9 @@ export const bookingsService = {
         return response.data;
     },
 
-    // Obtener reservas del usuario
+    // Obtener todas las reservas (luego filtramos por usuario)
     getUserBookings: async () => {
-        const response = await api.get('/reservas/usuario');
+        const response = await api.get('/reservas/');
         return response.data;
     },
 

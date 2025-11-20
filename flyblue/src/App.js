@@ -12,6 +12,7 @@ import Layout from './components/layout/Layout';
 import CreateBooking from './pages/bookings/CreateBooking';
 import PaymentPage from './pages/payments/PaymentPage';
 import PaymentSuccess from './pages/payments/PaymentSuccess';
+import MyBookings from './pages/bookings/MyBookings';
 
 // Componente para rutas protegidas
 const ProtectedRoute = ({ children }) => {
@@ -54,6 +55,14 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <PaymentPage />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/bookings" element={
+            <ProtectedRoute>
+              <Layout>
+                <MyBookings />
               </Layout>
             </ProtectedRoute>
           } />

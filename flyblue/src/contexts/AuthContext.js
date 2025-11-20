@@ -129,13 +129,19 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
+    const getUserId = () => {
+        const currentUser = authService.getCurrentUser();
+        return currentUser?.id || null;
+    };
+
     const value = {
         user,
         login,
         register,
         logout,
         loading,
-        isAuthenticated: !!user
+        isAuthenticated: !!user,
+        getUserId
     };
 
     return (
