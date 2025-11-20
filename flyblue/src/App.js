@@ -13,6 +13,7 @@ import CreateBooking from './pages/bookings/CreateBooking';
 import PaymentPage from './pages/payments/PaymentPage';
 import PaymentSuccess from './pages/payments/PaymentSuccess';
 import MyBookings from './pages/bookings/MyBookings';
+import ServicesPage from './pages/services/ServicesPage';
 
 // Componente para rutas protegidas
 const ProtectedRoute = ({ children }) => {
@@ -71,6 +72,14 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <PaymentSuccess />
+              </Layout>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/services" element={
+            <ProtectedRoute>
+              <Layout>
+                <ServicesPage />
               </Layout>
             </ProtectedRoute>
           } />

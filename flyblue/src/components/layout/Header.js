@@ -25,6 +25,7 @@ const Header = () => {
                             <Link to="/" className="nav-link">Vuelos</Link>
                             <Link to="/bookings" className="nav-link">Mis Reservas</Link>
                             <Link to="/profile" className="nav-link">Perfil</Link>
+                            <Link to="/services" className="nav-link">Servicios</Link>
                             <div className="user-menu">
                                 <span>Hola, {user?.firstName || user?.email?.split('@')[0] || 'Usuario'}</span>
                                 <button onClick={handleLogout} className="logout-btn">

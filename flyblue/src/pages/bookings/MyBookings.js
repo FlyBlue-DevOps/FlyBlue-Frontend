@@ -149,7 +149,7 @@ const MyBookings = () => {
                                     </div>
                                 </div>
                                 <div className="booking-status">
-                                    {getStatusBadge("Completado")}
+                                    {getStatusBadge(booking.estado)}
                                 </div>
                             </div>
 
