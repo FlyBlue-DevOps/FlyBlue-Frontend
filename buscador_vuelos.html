@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FlyBlue - Buscar Vuelos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#00529B",
+              "background-light": "#f5f5f5",
+              "background-dark": "#101622",
+              "secondary-light": "#E6F0FA",
+              "text-dark": "#333333"
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- TopAppBar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between">
+<h2 class="text-primary text-2xl font-bold leading-tight tracking-[-0.015em] flex-1">FlyBlue</h2>
+<div class="text-text-dark dark:text-white flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</div>
+</div>
+<!-- HeadlineText -->
+<h1 class="text-text-dark dark:text-white tracking-tight text-[32px] font-bold leading-tight px-4 text-left pb-3 pt-6">¿A dónde quieres volar?</h1>
+<main class="flex flex-col gap-4 p-4">
+<!-- Search Form Card -->
+<div class="bg-white dark:bg-background-dark/50 rounded-xl shadow-lg p-4 flex flex-col gap-4">
+<!-- SegmentedButtons -->
+<div class="flex w-full">
+<div class="flex h-12 flex-1 items-center justify-center rounded-lg bg-secondary-light dark:bg-background-dark p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-md has-[:checked]:text-primary dark:has-[:checked]:text-white text-text-dark dark:text-white/70 text-sm font-medium leading-normal">
+<span class="truncate">Viaje Redondo</span>
+<input checked="" class="invisible w-0" name="trip-type" type="radio" value="Viaje Redondo"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-primary/30 has-[:checked]:shadow-md has-[:checked]:text-primary dark:has-[:checked]:text-white text-text-dark dark:text-white/70 text-sm font-medium leading-normal">
+<span class="truncate">Solo Ida</span>
+<input class="invisible w-0" name="trip-type" type="radio" value="Solo Ida"/>
+</label>
+</div>
+</div>
+<!-- Origin & Destination Inputs -->
+<div class="relative flex flex-col gap-2">
+<!-- Origin TextField -->
+<div class="relative flex flex-col w-full">
+<label class="text-text-dark dark:text-white/80 text-sm font-medium leading-normal pb-2" for="origen">Origen</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark/60 dark:text-white/60">flight_takeoff</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-secondary-light dark:bg-background-dark h-14 placeholder:text-text-dark/50 dark:placeholder:text-white/50 pl-11 pr-4 py-2 text-base font-normal leading-normal" id="origen" placeholder="Ciudad o aeropuerto" value="Monterrey (MTY)"/>
+</div>
+</div>
+<!-- Swap Icon -->
+<div class="absolute right-3 top-[5.25rem] z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white dark:bg-slate-700 shadow-md border border-gray-200 dark:border-gray-600">
+<span class="material-symbols-outlined text-primary text-2xl font-semibold">swap_vert</span>
+</div>
+<div class="border-l-2 border-dashed border-gray-300 dark:border-gray-600 h-6 ml-5"></div>
+<!-- Destination TextField -->
+<div class="relative flex flex-col w-full">
+<label class="text-text-dark dark:text-white/80 text-sm font-medium leading-normal pb-2" for="destino">Destino</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark/60 dark:text-white/60">flight_land</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-secondary-light dark:bg-background-dark h-14 placeholder:text-text-dark/50 dark:placeholder:text-white/50 pl-11 pr-4 py-2 text-base font-normal leading-normal" id="destino" placeholder="Ciudad o aeropuerto" value=""/>
+</div>
+</div>
+</div>
+<!-- Date & Passenger Selectors -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<label class="text-text-dark dark:text-white/80 text-sm font-medium leading-normal pb-2" for="ida">Ida</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark/60 dark:text-white/60">calendar_month</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-secondary-light dark:bg-background-dark h-14 placeholder:text-text-dark/50 dark:placeholder:text-white/50 pl-11 pr-4 py-2 text-base font-normal leading-normal" id="ida" value="15 Dic"/>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="text-text-dark dark:text-white/80 text-sm font-medium leading-normal pb-2" for="vuelta">Vuelta</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark/60 dark:text-white/60">calendar_month</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-secondary-light dark:bg-background-dark h-14 placeholder:text-text-dark/50 dark:placeholder:text-white/50 pl-11 pr-4 py-2 text-base font-normal leading-normal" id="vuelta" value="22 Dic"/>
+</div>
+</div>
+</div>
+<!-- Passengers Selector -->
+<div class="flex flex-col w-full">
+<label class="text-text-dark dark:text-white/80 text-sm font-medium leading-normal pb-2" for="pasajeros">Pasajeros</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-dark/60 dark:text-white/60">group</span>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-700 bg-secondary-light dark:bg-background-dark h-14 placeholder:text-text-dark/50 dark:placeholder:text-white/50 pl-11 pr-4 py-2 text-base font-normal leading-normal" id="pasajeros" value="1 Adulto"/>
+</div>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="flex items-center justify-center w-full bg-primary text-white font-bold h-14 rounded-lg text-lg shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                Buscar Vuelos
+            </button>
+</main>
+<!-- Additional Content Section -->
+<section class="px-4 pb-8 pt-4">
+<h3 class="text-xl font-bold text-text-dark dark:text-white mb-4">Ofertas destacadas</h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 rounded-lg bg-white dark:bg-background-dark/50 p-3 shadow-sm">
+<img class="h-20 w-20 rounded-md object-cover" data-alt="Playa de arena blanca con agua turquesa en Cancún" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiQql6bfCrXuXW1yXg8oNkZYc0emCv9dkN7ZiGEz_790XLjG6f5OUp4GsHaSdkqeBkQkvP7GP1D1dAJBuynWvjiwWZgq3g-QUYFu2KXBNzThQkEXoAcRK8G_EvqrfmU0-Folvc4lJG6OKmV7m6ZMxMPRwJCDxNFkxFqmBj-NMR808-4TuU--394xB9O7GaGWqo6wrErnv2oHZckSj7FoHrJ-enNs9TTJ_28dQIoFZNr6BnN2PRMHuHgv-ztqkM6SQnb6USZS0UX_0"/>
+<div class="flex-1">
+<p class="font-bold text-text-dark dark:text-white">Vuela a Cancún</p>
+<p class="text-sm text-text-dark/70 dark:text-white/70">Desde $999 MXN</p>
+</div>
+<span class="material-symbols-outlined text-text-dark/60 dark:text-white/60">arrow_forward_ios</span>
+</div>
+<div class="flex items-center gap-4 rounded-lg bg-white dark:bg-background-dark/50 p-3 shadow-sm">
+<img class="h-20 w-20 rounded-md object-cover" data-alt="Monumento del Ángel de la Independencia en la Ciudad de México al atardecer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxxvpCaoMgv8qANy27GOTEmd-K3Vgww-fSmOGOIXYW747fpnDK84BGPnU6UbScFwUzQsnv_s3bC7guqhivuw5WcOEvaqYYV3_y-OedOlXNYR92fEMLDlEuR3noc7EI9PidinEozVdo4qwZT31h6NDEAjsX-gZFu2fQHq38d9EH70p78NlI-FrJpVGSn9bftZH_9vNGG58-q3XsQKW_qECIo4pZGPmbeFxvFAurb3UMyAcdqxBysI0MkzsX2aJcPmFW_SDYt-NrNQ"/>
+<div class="flex-1">
+<p class="font-bold text-text-dark dark:text-white">Escápate a CDMX</p>
+<p class="text-sm text-text-dark/70 dark:text-white/70">Desde $850 MXN</p>
+</div>
+<span class="material-symbols-outlined text-text-dark/60 dark:text-white/60">arrow_forward_ios</span>
+</div>
+</div>
+</section>
+</div>
+</body></html>
