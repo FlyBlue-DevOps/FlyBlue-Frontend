@@ -18,20 +18,29 @@ const MyBookings = () => {
     const loadUserBookings = async () => {
         try {
             setLoading(true);
+            setError('');
 
             // Obtener todas las reservas del endpoint
             const allBookings = await bookingsService.getUserBookings();
 
-            // Filtrar solo las reservas del usuario actual
+            // Obtener el ID del usuario actual desde el token
             const userId = getUserId();
-            console.log('User ID:', userId);
-            console.log('All bookings:', allBookings);
+            console.log('🔍 User ID desde token:', userId);
+            console.log('📋 Todas las reservas:', allBookings);
 
-            const userBookings = allBookings.filter(booking =>
-                booking.usuario_id === parseInt(userId)
-            );
+            if (!userId) {
+                setError('No se pudo obtener la información del usuario');
+                setLoading(false);
+                return;
+            }
 
-            console.log('Filtered bookings:', userBookings);
+            // Filtrar solo las reservas del usuario actual
+            const userBookings = allBookings.filter(booking => {
+                console.log(`Comparando: ${booking.usuario_id} (${typeof booking.usuario_id}) vs ${userId} (${typeof userId})`);
+                return booking.usuario_id === parseInt(userId);
+            });
+
+            console.log('✅ Reservas del usuario:', userBookings);
 
             // Enriquecer las reservas con información del vuelo
             const bookingsWithFlightInfo = await Promise.all(
@@ -43,7 +52,7 @@ const MyBookings = () => {
                             flight
                         };
                     } catch (error) {
-                        console.error('Error loading flight for booking:', booking.vuelo_id, error);
+                        console.error(`Error cargando vuelo ${booking.vuelo_id}:`, error);
                         return {
                             ...booking,
                             flight: null
@@ -55,8 +64,8 @@ const MyBookings = () => {
             setBookings(bookingsWithFlightInfo);
 
         } catch (err) {
-            setError('Error al cargar las reservas');
-            console.error('Error loading bookings:', err);
+            console.error('Error cargando reservas:', err);
+            setError('Error al cargar las reservas: ' + (err.message || 'Error desconocido'));
         } finally {
             setLoading(false);
         }
@@ -101,9 +110,21 @@ const MyBookings = () => {
             <div className="bookings-header">
                 <h1>Mis Reservas</h1>
                 <p>Gestiona y revisa todas tus reservas de vuelo</p>
+                <div className="user-info" style={{ fontSize: '14px', color: '#666', marginTop: '10px' }}>
+                    Cédula: {getUserId() || 'No disponible'} |
+                    Email: {user?.email} |
+                    Rol: {user?.rol}
+                </div>
             </div>
 
-            {error && <div className="error-message">{error}</div>}
+            {error && (
+                <div className="error-message">
+                    {error}
+                    <button onClick={loadUserBookings} style={{ marginLeft: '10px', padding: '5px 10px' }}>
+                        Reintentar
+                    </button>
+                </div>
+            )}
 
             <div className="bookings-list">
                 {bookings.length === 0 ? (
@@ -121,14 +142,14 @@ const MyBookings = () => {
                             <div className="booking-header">
                                 <div className="booking-info">
                                     <div className="booking-id">
-                                        Reserva #${booking.id}
+                                        Reserva #{booking.id}
                                     </div>
                                     <div className="booking-date">
                                         Reservado el: {formatDate(booking.fecha_reserva)}
                                     </div>
                                 </div>
                                 <div className="booking-status">
-                                    {getStatusBadge(booking.estado)}
+                                    {getStatusBadge("Completado")}
                                 </div>
                             </div>
 
@@ -163,7 +184,7 @@ const MyBookings = () => {
                                         </div>
                                         <div className="detail">
                                             <span className="label">Asiento:</span>
-                                            <span className="value">{booking.asiento || 'No asignado'}</span>
+                                            <span className="value">{booking.asiento}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -180,38 +201,8 @@ const MyBookings = () => {
                                     Total: <span className="total-amount">${booking.total?.toLocaleString()}</span>
                                 </div>
 
-                                <div className="booking-actions">
-                                    {booking.estado?.toLowerCase() === 'confirmada' && (
-                                        <button className="action-btn details-btn">
-                                            Ver Detalles
-                                        </button>
-                                    )}
-                                    {booking.estado?.toLowerCase() === 'pendiente' && (
-                                        <button className="action-btn pay-btn">
-                                            Completar Pago
-                                        </button>
-                                    )}
-                                    <button className="action-btn cancel-btn">
-                                        Cancelar
-                                    </button>
-                                </div>
+                                
                             </div>
-
-                            {/* Servicios adicionales si existen */}
-                            {booking.servicios_reserva && booking.servicios_reserva.length > 0 && (
-                                <div className="services-section">
-                                    <h4>Servicios Adicionales</h4>
-                                    <div className="services-list">
-                                        {booking.servicios_reserva.map(service => (
-                                            <div key={service.id} className="service-item">
-                                                <span className="service-name">Servicio #{service.servicio_id}</span>
-                                                <span className="service-quantity">x{service.cantidad}</span>
-                                                <span className="service-subtotal">${service.subtotal?.toLocaleString()}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     ))
                 )}
