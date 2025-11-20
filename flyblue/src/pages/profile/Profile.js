@@ -70,12 +70,6 @@ const Profile = () => {
                             <label>Documento:</label>
                             <span>{user?.documentNumber}</span>
                         </div>
-                        <button
-                            onClick={() => setIsEditing(true)}
-                            className="edit-btn"
-                        >
-                            Editar Perfil
-                        </button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="profile-form">
