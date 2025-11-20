@@ -1,0 +1,19 @@
+name: Trigger Backend Deploy
+
+on:
+  push:
+    branches:
+    - main
+    - monitoreo-despliegue
+
+jobs:
+  trigger-backend-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar deploy en FlyBlue-Backend
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.BACKEND_DISPATCH_TOKEN }}
+          repository: FlyBlue-DevOps/FlyBlue-Backend
+          event-type: frontend-updated
+          client-payload: '{"frontend_branch": "${{ github.ref }}", "frontend_commit": "${{ github.sha }}"}'
