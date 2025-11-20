@@ -1,0 +1,119 @@
+.auth-container {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8fafc;
+}
+
+.auth-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #e2e8f0;
+}
+
+.auth-form h2 {
+    text-align: center;
+    color: #1e40af;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form .form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-form .form-row .form-group {
+    flex: 1;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #1e40af;
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.auth-form button {
+    width: 100%;
+    background-color: #1e40af;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.auth-form button:hover:not(:disabled) {
+    background-color: #1e3a8a;
+}
+
+.auth-form button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 20px;
+    color: #64748b;
+}
+
+.auth-form a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-form a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    background-color: #fef2f2;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #fecaca;
+}
+
+@media (max-width: 480px) {
+    .auth-form {
+        padding: 20px;
+    }
+
+    .auth-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
