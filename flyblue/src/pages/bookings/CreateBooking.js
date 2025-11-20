@@ -113,7 +113,7 @@ const CreateBooking = () => {
     if (loading) {
         return (
             <div className="create-booking-page">
-                <div className="loading">Cargando información del vuelo...</div>
+                <div className="loading">Cargando información del vuelo de flyblue...</div>
             </div>
         );
     }
